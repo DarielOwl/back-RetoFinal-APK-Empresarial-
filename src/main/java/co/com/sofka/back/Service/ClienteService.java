@@ -11,4 +11,10 @@ public interface ClienteService {
 
     //Mostrar Todos los Clientes
     Flux<Cliente> findAll();
+
+    //Actualizar Cliente
+    Mono<Cliente> update(String id, Cliente cliente);
+
+    //Eliminar Cliente
+    Mono<Cliente> delete(String id);
 }
