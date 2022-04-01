@@ -11,4 +11,10 @@ public interface ProductoService {
 
     //Mostrar Todos los Productos
     Flux<Producto> findAll();
+
+    //Actualizar Producto
+    Mono<Producto> update(String id, Producto producto);
+
+    //Eliminar Producto
+    Mono<Producto> delete(String id);
 }

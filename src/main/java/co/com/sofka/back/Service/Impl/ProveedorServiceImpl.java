@@ -31,7 +31,7 @@ public class ProveedorServiceImpl implements ProveedorService {
     @Override
     public Mono<Proveedor> update(String id, Proveedor proveedor) {
         return this.proveedorRepository.findById(id)
-                .flatMap(clienteUpdate -> {
+                .flatMap(proveedorUpdate -> {
                     proveedor.setId(id);
                     return save(proveedor);
                 })

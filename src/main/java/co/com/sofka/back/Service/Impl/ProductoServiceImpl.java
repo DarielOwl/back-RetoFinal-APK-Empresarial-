@@ -25,4 +25,27 @@ public class ProductoServiceImpl implements ProductoService {
     public Flux<Producto> findAll() {
         return this.productoRepository.findAll();
     }
+
+    //Actualizar Producto
+    @Override
+    public Mono<Producto> update(String id, Producto producto) {
+        return this.productoRepository.findById(id)
+                .flatMap(productoUpdate -> {
+                    producto.setId(id);
+                    return save(producto);
+                })
+                .switchIfEmpty(Mono.empty());
+    }
+
+    //Eliminar Producto
+    @Override
+    public Mono<Producto> delete(String id) {
+        return this.productoRepository
+                .findById(id)
+                .flatMap(productoDelete -> this.productoRepository
+                                                .deleteById(productoDelete.getId()).thenReturn(productoDelete));
+
+    }
+
+
 }
