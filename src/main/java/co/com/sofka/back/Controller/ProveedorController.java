@@ -21,7 +21,7 @@ public class ProveedorController {
     ProveedorServiceImpl proveedorServiceImpl;
 
 
-    //-----------------CRUD PROVEEDOR-----------------
+    //-----------------CRUD PROVEEDOR-----------------//
 
     //Guardar un Proveedor
     @PostMapping("/addProveedor")

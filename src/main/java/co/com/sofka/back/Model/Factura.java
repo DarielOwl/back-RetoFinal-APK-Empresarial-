@@ -5,6 +5,7 @@ import co.com.sofka.back.Model.Producto;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -18,7 +19,7 @@ public class Factura {
 
     private Long consecutivoFactura;
 
-    private Date Fecha;
+    private LocalDate Fecha = LocalDate.now();
 
     private String nombreCliente;
 
@@ -27,15 +28,15 @@ public class Factura {
     private List<Producto> productos;
 
     private Long totalPagar;
-
+    
     //Constructor por defecto
     public Factura() {}
 
     //Constructor definido
-    public Factura(String id, Long consecutivoFactura, Date fecha, String nombreCliente, String nombreEmpleado, List<Producto> productos, Long totalPagar) {
+    public Factura(String id, Long consecutivoFactura, LocalDate fecha, String nombreCliente, String nombreEmpleado, List<Producto> productos, Long totalPagar) {
         this.id = id;
         this.consecutivoFactura = consecutivoFactura;
-        Fecha = fecha;
+        this.Fecha = fecha;
         this.nombreCliente = nombreCliente;
         this.nombreEmpleado = nombreEmpleado;
         this.productos = productos;
@@ -51,7 +52,7 @@ public class Factura {
         return consecutivoFactura;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return Fecha;
     }
 
@@ -80,7 +81,7 @@ public class Factura {
         this.consecutivoFactura = consecutivoFactura;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         Fecha = fecha;
     }
 
@@ -126,5 +127,4 @@ public class Factura {
     public int hashCode() {
         return Objects.hash(id, consecutivoFactura, Fecha, nombreCliente, nombreEmpleado, productos, totalPagar);
     }
-
 }
