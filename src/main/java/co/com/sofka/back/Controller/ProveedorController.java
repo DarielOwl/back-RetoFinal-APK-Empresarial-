@@ -52,4 +52,14 @@ public class ProveedorController {
                 .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
     }
 
+
+    //TODO: Realizar Caso de Uso de Proveedor
+    //-----------------CASO DE USO-----------------//
+    // Guardar la información de sus proveedores
+
+    /*Notas:
+    * Al guardar el proveedor, se deberia guardar voletaproveedor?
+    * */
+
+
 }

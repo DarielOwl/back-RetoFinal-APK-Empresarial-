@@ -31,6 +31,7 @@ public class ClienteController {
         return this.clienteServiceImpl.findAll();
     }
 
+    //TODO: Mejorar Funcion, Sacarle el "ResponseEntity", se esta trabajando con webflux
     //Actualizar Cliente
     @PutMapping("/updateCliente/{id}")
     private Mono<ResponseEntity<Cliente>> update(@PathVariable("id") String id, @RequestBody Cliente cliente) {
@@ -39,6 +40,7 @@ public class ClienteController {
                 .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
     }
 
+    //TODO: Mejorar Funcion, Sacarle el "ResponseEntity", se esta trabajando con webflux
     //Eliminar Cliente
     @DeleteMapping("/removeCliente/{id}")
     private Mono<ResponseEntity<Cliente>> delete(@PathVariable("id") String id) {
@@ -47,5 +49,9 @@ public class ClienteController {
                 .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
 
     }
+
+    //TODO: Realizar Caso de Uso de Cliente
+    //-----------------CASO DE USO-----------------//
+    //Raúl debe poder guardar la información de sus cliente
 
 }

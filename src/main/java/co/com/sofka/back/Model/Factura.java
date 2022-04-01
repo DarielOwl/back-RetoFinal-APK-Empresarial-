@@ -28,7 +28,7 @@ public class Factura {
     private List<Producto> productos;
 
     private Long totalPagar;
-    
+
     //Constructor por defecto
     public Factura() {}
 

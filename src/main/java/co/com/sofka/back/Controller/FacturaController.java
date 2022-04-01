@@ -50,4 +50,14 @@ public class FacturaController {
                 .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
     }
 
+    //TODO: Realizar Caso de Uso de Factura
+    //-----------------CASO DE USO-----------------//
+    //Llevar histórico de ventas
+    /*Notas:
+     * El historico de ventas son las facturas.
+     * y podria ser voletaproveedor?
+     * */
+
+
+
 }
