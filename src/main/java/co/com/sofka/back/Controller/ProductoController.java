@@ -36,18 +36,18 @@ public class ProductoController {
 
     //Actualizar Producto
     @PutMapping("/updateProducto/{id}")
-    private Mono<ResponseEntity<Producto>> update(@PathVariable("id") String id, @RequestBody Producto producto) {
+    private Mono<Producto> update(@PathVariable("id") String id, @RequestBody Producto producto) {
         return this.productoServiceImpl.update(id, producto)
-                .flatMap(producto1 -> Mono.just(ResponseEntity.ok(producto1)))
-                .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
+                .flatMap(producto1 -> Mono.just((producto1))
+                .switchIfEmpty(Mono.empty()));
     }
 
     //Eliminar Producto
     @DeleteMapping("/removeProducto/{id}")
-    private Mono<ResponseEntity<Producto>> delete(@PathVariable("id") String id) {
+    private Mono<Producto> delete(@PathVariable("id") String id) {
         return this.productoServiceImpl.delete(id)
-                .flatMap(producto1 -> Mono.just(ResponseEntity.ok(producto1)))
-                .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
+                .flatMap(producto1 -> Mono.just((producto1))
+                .switchIfEmpty(Mono.empty()));
     }
 
 
