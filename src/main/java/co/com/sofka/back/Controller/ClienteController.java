@@ -16,22 +16,25 @@ public class ClienteController {
     @Autowired
     ClienteServiceImpl clienteServiceImpl;
 
-    //-----------------CRUD CLIENTE-----------------//
 
+
+    //-----------------CASO DE USO-----------------//
+    //Raúl debe poder guardar la información de sus cliente
     //Guardar un Cliente
     @PostMapping("/addCliente")
     @ResponseStatus(HttpStatus.CREATED)
     private Mono<Cliente> save(@RequestBody Cliente cliente) {
         return this.clienteServiceImpl.save(cliente);
     }
+    //-----------------CASO DE USO-----------------//
 
+    //-----------------CRUD CLIENTE-----------------//
     //Mostrar Todos los Clientes
     @GetMapping(value = "/allCliente")
     private Flux<Cliente> findAll() {
         return this.clienteServiceImpl.findAll();
     }
 
-    //TODO: Mejorar Funcion, Sacarle el "ResponseEntity", se esta trabajando con webflux
     //Actualizar Cliente
     @PutMapping("/updateCliente/{id}")
     private Mono<Cliente> update(@PathVariable("id") String id, @RequestBody Cliente cliente) {
@@ -39,7 +42,6 @@ public class ClienteController {
                 .flatMap(cliente1 -> Mono.just(cliente1)).switchIfEmpty(Mono.empty());
     }
 
-    //TODO: Mejorar Funcion, Sacarle el "ResponseEntity", se esta trabajando con webflux
     //Eliminar Cliente
     @DeleteMapping("/removeCliente/{id}")
     private Mono<Cliente> delete(@PathVariable("id") String id) {
@@ -48,8 +50,6 @@ public class ClienteController {
 
     }
 
-    //TODO: Realizar Caso de Uso de Cliente
-    //-----------------CASO DE USO-----------------//
-    //Raúl debe poder guardar la información de sus cliente
+
 
 }

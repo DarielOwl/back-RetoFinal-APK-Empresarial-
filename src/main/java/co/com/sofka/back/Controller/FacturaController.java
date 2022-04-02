@@ -36,18 +36,18 @@ public class FacturaController {
 
     //Actualizar Factura
     @PutMapping("/updateFactura/{id}")
-    private Mono<ResponseEntity<Factura>> update(@PathVariable("id") String id, @RequestBody Factura factura) {
+    private Mono<Factura> update(@PathVariable("id") String id, @RequestBody Factura factura) {
         return this.facturaServiceImpl.update(id, factura)
-                .flatMap(factura1 -> Mono.just(ResponseEntity.ok(factura1)))
-                .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
+                .flatMap(factura1 -> Mono.just((factura1))
+                .switchIfEmpty(Mono.empty()));
     }
 
     //Eliminar Factura
     @DeleteMapping("/removeFactura/{id}")
-    private Mono<ResponseEntity<Factura>> delete(@PathVariable("id") String id) {
+    private Mono<Factura> delete(@PathVariable("id") String id) {
         return this.facturaServiceImpl.delete(id)
-                .flatMap(factura1 -> Mono.just(ResponseEntity.ok(factura1)))
-                .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
+                .flatMap(factura1 -> Mono.just((factura1))
+                .switchIfEmpty(Mono.empty()));
     }
 
     //TODO: Realizar Caso de Uso de Factura
