@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "*")
 @RestController
 public class ProductoController {
 
