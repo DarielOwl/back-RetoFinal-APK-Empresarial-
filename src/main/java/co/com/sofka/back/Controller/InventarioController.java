@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class InventarioController {
 
-    @Autowired
-    InventarioServiceImpl inventarioServiceImpl;
+    //@Autowired
+    //InventarioServiceImpl inventarioServiceImpl;
 
     //TODO: Realizar Caso de Uso de Inventario
     //-----------------CASO DE USO-----------------//
     //Llevar un inventario de sus productos
-    
+
 
 }
