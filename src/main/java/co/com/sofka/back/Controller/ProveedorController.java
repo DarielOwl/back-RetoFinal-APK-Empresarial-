@@ -38,18 +38,18 @@ public class ProveedorController {
 
     //Actualizar Proveedor
     @PutMapping("/updateProveedor/{id}")
-    private Mono<ResponseEntity<Proveedor>> update(@PathVariable("id") String id, @RequestBody Proveedor proveedor) {
+    private Mono<Proveedor> update(@PathVariable("id") String id, @RequestBody Proveedor proveedor) {
         return this.proveedorServiceImpl.update(id, proveedor)
-                .flatMap(proveedor1 -> Mono.just(ResponseEntity.ok(proveedor1)))
-                .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
+                .flatMap(proveedor1 -> Mono.just((proveedor1))
+                .switchIfEmpty(Mono.empty()));
     }
 
     //Eliminar Proveedor
     @DeleteMapping("/removeProveedor/{id}")
-    private Mono<ResponseEntity<Proveedor>> delete(@PathVariable("id") String id) {
+    private Mono<Proveedor> delete(@PathVariable("id") String id) {
         return this.proveedorServiceImpl.delete(id)
-                .flatMap(proveedor1 -> Mono.just(ResponseEntity.ok(proveedor1)))
-                .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
+                .flatMap(proveedor1 -> Mono.just((proveedor1)))
+                .switchIfEmpty(Mono.empty());
     }
 
 
