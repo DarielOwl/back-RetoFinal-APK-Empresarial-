@@ -34,19 +34,17 @@ public class ClienteController {
     //TODO: Mejorar Funcion, Sacarle el "ResponseEntity", se esta trabajando con webflux
     //Actualizar Cliente
     @PutMapping("/updateCliente/{id}")
-    private Mono<ResponseEntity<Cliente>> update(@PathVariable("id") String id, @RequestBody Cliente cliente) {
+    private Mono<Cliente> update(@PathVariable("id") String id, @RequestBody Cliente cliente) {
         return this.clienteServiceImpl.update(id, cliente)
-                .flatMap(cliente1 -> Mono.just(ResponseEntity.ok(cliente1)))
-                .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
+                .flatMap(cliente1 -> Mono.just(cliente1)).switchIfEmpty(Mono.empty());
     }
 
     //TODO: Mejorar Funcion, Sacarle el "ResponseEntity", se esta trabajando con webflux
     //Eliminar Cliente
     @DeleteMapping("/removeCliente/{id}")
-    private Mono<ResponseEntity<Cliente>> delete(@PathVariable("id") String id) {
+    private Mono<Cliente> delete(@PathVariable("id") String id) {
         return this.clienteServiceImpl.delete(id)
-                .flatMap(cliente1 -> Mono.just(ResponseEntity.ok(cliente1)))
-                .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
+                .flatMap(cliente1 -> Mono.just((cliente1)).switchIfEmpty(Mono.empty()));
 
     }
 
