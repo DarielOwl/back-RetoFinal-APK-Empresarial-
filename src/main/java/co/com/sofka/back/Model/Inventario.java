@@ -43,8 +43,12 @@ public class Inventario {
         return nombreInventario;
     }
 
-    public Long getStock() {
-        return stock;
+    public Long getStockMinimo() {
+        return stockMinimo;
+    }
+
+    public Long getStockMaximo() {
+        return stockMaximo;
     }
 
     public List<Producto> getProductos() {
@@ -60,8 +64,12 @@ public class Inventario {
         this.nombreInventario = nombreInventario;
     }
 
-    public void setStock(Long stock) {
-        this.stock = stock;
+    public void setStockMinimo(Long stockMinimo) {
+        this.stockMinimo = stockMinimo;
+    }
+
+    public void setStockMaximo(Long stockMaximo) {
+        this.stockMaximo = stockMaximo;
     }
 
     public void setProductos(List<Producto> productos) {
@@ -74,7 +82,8 @@ public class Inventario {
         return "Inventario{" +
                 "id='" + id + '\'' +
                 ", nombreInventario='" + nombreInventario + '\'' +
-                ", stock=" + stock +
+                ", stockMinimo=" + stockMinimo +
+                ", stockMaximo=" + stockMaximo +
                 ", productos=" + productos +
                 '}';
     }
@@ -84,12 +93,11 @@ public class Inventario {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Inventario that = (Inventario) o;
-        return Objects.equals(id, that.id) && Objects.equals(nombreInventario, that.nombreInventario) && Objects.equals(stock, that.stock) && Objects.equals(productos, that.productos);
+        return Objects.equals(id, that.id) && Objects.equals(nombreInventario, that.nombreInventario) && Objects.equals(stockMinimo, that.stockMinimo) && Objects.equals(stockMaximo, that.stockMaximo) && Objects.equals(productos, that.productos);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombreInventario, stock, productos);
+        return Objects.hash(id, nombreInventario, stockMinimo, stockMaximo, productos);
     }
-
 }

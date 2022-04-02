@@ -18,20 +18,23 @@ public class FacturaController {
     @Autowired
     FacturaServiceImpl facturaServiceImpl;
 
-    //-----------------CRUD FACTURA-----------------//
 
-    //TODO: El metodo POST no guarda en el campo productos, hacer que guarde una LISTA de productos
+    //-----------------CASO DE USO-----------------//
+    //Llevar histórico de ventas
+    //Mostrar Todos los Factura
+    @GetMapping(value = "/allFactura")
+    private Flux<Factura> findAll() {
+        return this.facturaServiceImpl.findAll();
+    }
+    //-----------------CASO DE USO-----------------//
+
+
+    //-----------------CRUD FACTURA-----------------//
     //Guardar un Factura
     @PostMapping("/addFactura")
     @ResponseStatus(HttpStatus.CREATED)
     private Mono<Factura> save(@RequestBody Factura factura) {
         return this.facturaServiceImpl.save(factura);
-    }
-
-    //Mostrar Todos los Factura
-    @GetMapping(value = "/allFactura")
-    private Flux<Factura> findAll() {
-        return this.facturaServiceImpl.findAll();
     }
 
     //Actualizar Factura
@@ -49,16 +52,6 @@ public class FacturaController {
                 .flatMap(factura1 -> Mono.just((factura1))
                 .switchIfEmpty(Mono.empty()));
     }
-
-    //TODO: Realizar Caso de Uso de Factura
-    //-----------------CASO DE USO-----------------//
-    //Llevar histórico de ventas
-    /*Notas:
-     * El historico de ventas son las facturas.
-     * y podria ser voletaproveedor?
-     * */
-
-
 
 
 }

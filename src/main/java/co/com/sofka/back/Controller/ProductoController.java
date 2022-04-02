@@ -19,19 +19,22 @@ public class ProductoController {
     ProductoServiceImpl productoServiceImpl;
 
 
-    //-----------------CRUD PRODUCTO-----------------//
+    //-----------------CASO DE USO-----------------//
+    //Llevar un inventario de sus productos
+    //Mostrar Todos los Productos
+    @GetMapping(value = "/allProducto")
+    private Flux<Producto> findAll() {
+        return this.productoServiceImpl.findAll();
+    }
+    //-----------------CASO DE USO-----------------//
 
+
+    //-----------------CRUD PRODUCTO-----------------//
     //Guardar un Producto
     @PostMapping("/addProducto")
     @ResponseStatus(HttpStatus.CREATED)
     private Mono<Producto> save(@RequestBody Producto producto) {
         return this.productoServiceImpl.save(producto);
-    }
-
-    //Mostrar Todos los Productos
-    @GetMapping(value = "/allProducto")
-    private Flux<Producto> findAll() {
-        return this.productoServiceImpl.findAll();
     }
 
     //Actualizar Producto

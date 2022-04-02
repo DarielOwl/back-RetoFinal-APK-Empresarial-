@@ -16,15 +16,10 @@ public class InventarioController {
     //@Autowired
     InventarioServiceImpl inventarioService;
 
-    //TODO: Realizar Caso de Uso de Inventario
-    //-----------------CASO DE USO-----------------//
-    //Llevar un inventario de sus productos
     //Mostrar Todos los Productos
     @GetMapping(value = "/allInventario")
     private Flux<Inventario> findAll() {
         return this.inventarioService.findAll();
     }
-    //-----------------CASO DE USO-----------------//
-
 
 }
