@@ -20,16 +20,17 @@ public class ProveedorController {
     @Autowired
     ProveedorServiceImpl proveedorServiceImpl;
 
-
-    //-----------------CRUD PROVEEDOR-----------------//
-
+    //-----------------CASO DE USO-----------------//
+    // Guardar la información de sus proveedores
     //Guardar un Proveedor
     @PostMapping("/addProveedor")
     @ResponseStatus(HttpStatus.CREATED)
     private Mono<Proveedor> save(@RequestBody Proveedor proveedor) {
         return this.proveedorServiceImpl.save(proveedor);
     }
+    //-----------------CASO DE USO-----------------//
 
+    //-----------------CRUD PROVEEDOR-----------------//
     //Mostrar Todos los Proveedores
     @GetMapping(value = "/allProveedor")
     private Flux<Proveedor> findAll() {
@@ -53,9 +54,7 @@ public class ProveedorController {
     }
 
 
-    //TODO: Realizar Caso de Uso de Proveedor
-    //-----------------CASO DE USO-----------------//
-    // Guardar la información de sus proveedores
+
 
     /*Notas:
     * Al guardar el proveedor, se deberia guardar voletaproveedor?

@@ -16,7 +16,9 @@ public class Inventario {
 
     private String nombreInventario;
 
-    private Long stock;
+    private Long stockMinimo;
+
+    private Long stockMaximo;
 
     private List<Producto> productos;
 
@@ -24,10 +26,11 @@ public class Inventario {
     public Inventario() {}
 
     //Constructor definido
-    public Inventario(String id, String nombreInventario, Long stock, List<Producto> productos) {
+    public Inventario(String id, String nombreInventario, Long stockMinimo, Long stockMaximo, List<Producto> productos) {
         this.id = id;
         this.nombreInventario = nombreInventario;
-        this.stock = stock;
+        this.stockMinimo = stockMinimo;
+        this.stockMaximo = stockMaximo;
         this.productos = productos;
     }
 

@@ -21,6 +21,12 @@ public class Cliente {
 
     private String celular;
 
+    public Cliente(String documentoIdentidad, String nombre, String celular) {
+        this.documentoIdentidad = documentoIdentidad;
+        this.nombre = nombre;
+        this.celular = celular;
+    }
+
     //Constructor por defecto
     public Cliente() {}
 
